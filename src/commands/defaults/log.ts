@@ -18,11 +18,10 @@ export const logCommand = (yargs: Argv<{}>) => {
     },
     async (argv) => {
       const content = argv.content as string[];
-      log(content, content.length === 0, logsFile());
       if (content.length === 0) {
         const less = spawn('less', [logsFile()], { stdio: 'inherit' });
       } else {
-        const formattedDateTime = DateTime.now().toFormat('yyyy-MM-dd hh:ss a');
+        const formattedDateTime = DateTime.now().toFormat('yyyy-MM-dd hh:mm a');
         const formattedContent = content.join(' ');
         const line = `[${formattedDateTime}]: ${formattedContent}`;
 
